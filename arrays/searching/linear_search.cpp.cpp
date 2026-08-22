@@ -1,0 +1,50 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    int n;
+    cout << "Enter number of Elements in the Array: ";
+    cin >> n;
+
+    vector<int> arr(n);
+
+    cout << "Enter the Array Elements: " << endl;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+
+    int target;
+    cout << "Enter the Element to Search: ";
+    cin >> target;
+
+    int index = -1;
+
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] == target)
+        {
+            index = i;
+            break;
+        }
+    }
+
+    if (index != -1)
+    {
+        cout << "\nElement found at Index: " << index << endl;
+    }
+    else
+    {
+        cout << "\nElement not found." << endl;
+    }
+
+    return 0;
+}
+
+// Best case: O(1)
+// Target is the first element.
+
+// Worst case: O(n)
+// Target is at the end or doesn't exist.
