@@ -1,17 +1,36 @@
 #include <iostream>
 #include <vector>
 #include <climits>
+#include <algorithm>
 using namespace std;
 
 int main()
 {
-    vector<int> arr = {2, 1, 5, 1, 3, 2};
+    int n;
+    cout << "Enter number of Elements in Array: ";
+    cin >> n;
 
-    int k = 3;
+    vector<int> arr(n);
+    cout << "Enter Array Elements:" << endl;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+
+    int k;
+    cout << "Enter window size (k): ";
+    cin >> k;
+
+    if (k > n || k <= 0)
+    {
+        cout << "Invalid window size!" << endl;
+        return 0;
+    }
+
     int windowSum = 0;
     int minSum = INT_MAX;
 
-    for (int i = 0; i < arr.size(); i++)
+    for (int i = 0; i < n; i++)
     {
         windowSum += arr[i];
 
@@ -21,6 +40,7 @@ int main()
             windowSum -= arr[i - k + 1];
         }
     }
+
     cout << "Minimum Sum: " << minSum << endl;
     return 0;
 }
