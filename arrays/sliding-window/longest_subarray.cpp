@@ -5,25 +5,41 @@ using namespace std;
 
 int main()
 {
-    vector<int> arr = {2, 1, 3, 2, 1};
+    int n;
+    cout << "Enter number of Array Elements: ";
+    cin >> n;
 
-    int k = 5;
+    vector<int> arr(n);
+    cout << "Enter the Array Elements:" << endl;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+
+    int targetSum;
+    cout << "Enter the maximum target sum limit: ";
+    cin >> targetSum;
+
     int left = 0;
     int windowSum = 0;
     int maxLength = 0;
 
-    for (int right = 0; right < arr.size(); right++)
+    for (int right = 0; right < n; right++)
     {
         windowSum += arr[right];
 
-        while (windowSum > k)
+        while (windowSum > targetSum && left <= right)
         {
             windowSum -= arr[left];
             left++;
         }
 
-        maxLength = max(maxLength, right - left + 1);
+        if (windowSum <= targetSum)
+        {
+            maxLength = max(maxLength, right - left + 1);
+        }
     }
+
     cout << "Longest Subarray Length: " << maxLength << endl;
     return 0;
 }
