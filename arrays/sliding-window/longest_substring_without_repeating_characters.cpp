@@ -5,12 +5,14 @@ using namespace std;
 
 int main()
 {
-    string str = "abcabcbb";
+    string str;
+    cout << "Enter the String: ";
+    cin >> str;
 
     int left = 0;
     int maxLength = 0;
-    int freq[256] = {0};
 
+    int freq[256] = {0};
     for (int right = 0; right < str.length(); right++)
     {
         freq[(unsigned char)str[right]]++;
@@ -20,9 +22,9 @@ int main()
             freq[(unsigned char)str[left]]--;
             left++;
         }
-
         maxLength = max(maxLength, right - left + 1);
     }
+
     cout << "Longest Length: " << maxLength << endl;
     return 0;
 }
