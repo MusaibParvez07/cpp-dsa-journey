@@ -67,3 +67,4 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+arrays/sliding-window/maximum_no_of_consonants_in_a_substring.cpp
